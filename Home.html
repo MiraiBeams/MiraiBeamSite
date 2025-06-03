@@ -1,0 +1,499 @@
+<html lang="es">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <title>MiraiBeam Site</title>
+        <link rel="icon" type="image/png" href="img/favicon.png">
+    </head>
+    <body>
+<section class="intro">
+  <h1>Hey there! My name is Mirai</h1>
+  <p>Here you can find all my socials and a little info about me!</p>
+
+  <div class="socials-box" onclick="toggleMenu('ig')">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="icon" alt="Instagram">
+    <span>Instagram</span>
+  </div>
+  <div class="menu" id="menu-ig">
+    <p class="menu-text">When you click the "Continue" button, you'll be redirected to my Instagram page!</p>
+    <button onclick="goToLink('https://www.instagram.com/josecastro_16/')">Continue</button>
+  </div>
+
+  <div class="socials-box" onclick="toggleMenu('tw')">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="icon" alt="Twitter">
+    <span>Twitter</span>
+  </div>
+  <div class="menu" id="menu-tw">
+    <p class="menu-text">When you click the "Continue" button, you'll be redirected to my Twitter page!</p>
+    <button onclick="goToLink('https://twitter.com/castjoche1606')">Continue</button>
+  </div>
+</section>
+
+    <script>
+function toggleMenu(platform) {
+  const allMenus = document.querySelectorAll('.menu');
+  const allBoxes = document.querySelectorAll('.socials-box');
+  const selectedMenu = document.getElementById(`menu-${platform}`);
+  const selectedBox = document.querySelector(`[onclick="toggleMenu('${platform}')"]`);
+
+  const isCurrentlyOpen = selectedMenu.classList.contains('show');
+
+  allMenus.forEach(menu => menu.classList.remove('show'));
+  allBoxes.forEach(box => {
+    box.classList.remove('active');
+    box.classList.remove('spaced');
+  });
+
+  if (isCurrentlyOpen) return;
+
+  selectedMenu.classList.add('show');
+  selectedBox.classList.add('active');
+
+  let addSpaceNext = false;
+  allBoxes.forEach(box => {
+    if (addSpaceNext) {
+      box.classList.add('spaced');
+      addSpaceNext = false;
+    }
+    if (box === selectedBox) {
+      addSpaceNext = true;
+    }
+  });
+}
+        function goToLink(url){
+            window.open(url,'_blank');
+        }
+    </script>
+<section class="commissions">
+  <h2>Commission Details</h2>
+  <p class="comm-status">Currently closed — Stay tuned!</p>
+  <div class="comm-placeholder">
+    <img src="https://media.tenor.com/FnQi_p4WS-sAAAAe/stay-tuned-robertidk.png" alt="Commission sheet coming soon" class="zoomable">
+  </div>
+</section>
+<div id="zoom-modal" class="zoom-modal">
+  <div class="zoom-content">
+    <span id="zoom-close" class="zoom-close">×</span>
+    <img id="zoom-img" src="" alt="Zoomed commission sheet">
+  </div>
+</div>
+
+<section class="about-me">
+  <h2>About Me</h2>
+<div class="song-wrapper">
+  <div class="song-info">
+    <img src="img/cd.png" alt="CD" class="cd" id="cd-image">
+    <div>
+    <p class="song-title">Champion Leon Battle</p>
+    <p class="song-artist">Pokémon Sword & Shield OST</p>
+   </div>
+  </div>
+</div>
+<div class="controls">
+  <div class="progress-block">
+    <div class="time">
+      <span id="current-time">0:00</span>
+      <span id="total-time">0:00</span>
+    </div>
+    <div class="progress-container" id="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+
+<div class="button-row">
+  <button id="prev-btn" class="control-btn">⏮</button>
+  <button id="play-btn" class="control-btn">▶</button>
+  <button id="next-btn" class="control-btn">⏭</button>
+ <div class="volume-control">
+  <div class="volume-wrapper">
+    <button id="mute-btn" class="mute-btn">🔊</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+  </div>
+</div>
+</div>
+</div>
+    <audio id="music" src="music/leon.mp3"></audio>
+  </div>
+  <p class="about-box">
+    Hey there! I’m Mirai, an 18-year-old artist who draws for fun while also studying to become a systems engineer. I like Pokémon, Sonic the Hedgehog, Deltarune, Steven Universe, The Legend of Zelda, Yo-kai Watch, and I really love One Piece.
+I’m working on opening art commissions soon!
+In the meantime, this is my very first attempt at building my own website, so some things (like image sizes and layout quirks) might look a bit off, but I’m learning and improving as I go. Please continue supporting me!
+  </p>
+<div class="character-wrapper">
+  <div class="pokemon-row row-group" id="pokemon-row">
+    <img src="pngs/pkm/slowbro.png" class="poke" alt="Slowbro">
+    <img src="pngs/pkm/goodra-hisui.png" class="poke" alt="Goodra">
+    <img src="pngs/pkm/blastoise.png" class="poke" alt="Blastoise">
+    <img src="pngs/pkm/tyranitar.png" class="poke" alt="Tyranitar">
+    <img src="pngs/pkm/espeon.png" class="poke" alt="Espeon">
+    <img src="pngs/pkm/altaria.png" class="poke" alt="Altaria">
+  </div>
+
+ <div class="fe3h-row row-group" id="fe3h-row">
+    <img src="pngs/FE3H/Byleth.png" class="fe-unit" alt="Byleth">
+    <img src="pngs/FE3H/Claude.png" class="fe-unit" alt="Claude">
+    <img src="pngs/FE3H/Dimitri.png" class="fe-unit" alt="Dimitri">
+    <img src="pngs/FE3H/Edelgard.png" class="fe-unit" alt="Edelgard">
+    <img src="pngs/FE3H/Felix.png" class="fe-unit" alt="Felix">
+    <img src="pngs/FE3H/Sothis.png" class="fe-unit" alt="Sothis">
+  </div> 
+ <div class="vocal-row row-group" id="vocal-row">
+    <img src="pngs/Vocaloid/Kaito.png" class="vocal" alt="Byleth">
+    <img src="pngs/Vocaloid/Rin.png" class="vocal" alt="Rin">
+    <img src="pngs/Vocaloid/Miku.png" class="vocal" alt="Miku">
+    <img src="pngs/Vocaloid/Teto.png" class="vocal" alt="Teto">
+    <img src="pngs/Vocaloid/Len.png" class="vocal" alt="Len">
+    <img src="pngs/Vocaloid/Luka.png" class="vocal" alt="Luka">
+  </div>
+   <div class="delta-row row-group" id="delta-row">
+    <img src="pngs/Deltarune/Berdly.png" class="del" alt="Berdly">
+    <img src="pngs/Deltarune/Ralsei.png" class="del" alt="Ralsei">
+    <img src="pngs/Deltarune/Kris.png" class="del" alt="Kris">
+    <img src="pngs/Deltarune/Susie.png" class="del" alt="Susie">
+    <img src="pngs/Deltarune/Noelle.png" class="del" alt="Noelle">
+    <img src="pngs/Deltarune/Lancer.png" class="del" alt="Lancer">
+  </div>
+<div class="sonic-row row-group" id="sonic-row">
+    <img src="pngs/Sonic/Tails.png" class="son" alt="Tails">
+    <img src="pngs/Sonic/Amy.png" class="son" alt="Amy">
+    <img src="pngs/Sonic/Cream.png" class="son" alt="Cream">
+    <img src="pngs/Sonic/Knuckles.png" class="son" alt="Knuckles">
+    <img src="pngs/Sonic/Shadow.png" class="son" alt="Shadow">
+    <img src="pngs/Sonic/Sonic.png" class="son" alt="Sonic">
+  </div>
+<div class="SU-row row-group" id="SU-row">
+    <img src="pngs/SU/Bismuth.png" class="su" alt="Bismuth">
+    <img src="pngs/SU/Lapis.png" class="su" alt="Lapis">
+    <img src="pngs/SU/Steven.png" class="su" alt="Steven">
+    <img src="pngs/SU/Garnet.png" class="su" alt="Garnet">
+    <img src="pngs/SU/Pearl.png" class="su" alt="Pearl">
+    <img src="pngs/SU/Amatista.png" class="su" alt="Amatista">
+  </div>
+  <div class="zelda-row row-group" id="ST-row">
+    <img src="pngs/SpiritTracks/Diego.png" class="st" alt="Diego">
+    <img src="pngs/SpiritTracks/Radiel.png" class="st" alt="Radiel">
+    <img src="pngs/SpiritTracks/Bigboy.png" class="st" alt="Bigboy">
+    <img src="pngs/SpiritTracks/Zelda.png" class="st" alt="Zelda">
+    <img src="pngs/SpiritTracks/Link.png" class="st" alt="Link">
+    <img src="pngs/SpiritTracks/Ministro.png" class="st" alt="Ministro">
+  </div>
+  <div class="op-row row-group" id="OP-row">
+    <img src="pngs/OP/Straws.png" class="op" alt="Mugis">
+  </div>
+  <div class="yokai-row row-group" id="yk-row">
+    <img src="pngs/YOKAI/Blizzaria.png" class="YKW" alt="Blizzaria">
+    <img src="pngs/YOKAI/Komasan.png" class="YKW" alt="Komasan">
+    <img src="pngs/YOKAI/Whisper.png" class="YKW" alt="Whisper">
+    <img src="pngs/YOKAI/Jibanyan.png" class="YKW" alt="Jibanyan">
+    <img src="pngs/YOKAI/Robonyan.png" class="YKW" alt="Robonyan">
+    <img src="pngs/YOKAI/Kyuubi.png" class="YKW" alt="Kyuubi">
+  </div>
+</div>
+</section>
+
+<script>
+const playlist = [
+  {
+    title: "Champion Leon Battle",
+    artist: "Pokémon Sword & Shield OST",
+    src: "music/leon.mp3",
+    cdImage: "img/leon-cd.png"
+  },
+  {
+    title: "Fódlan Winds",
+    artist: "Fire Emblem: Three Houses",
+    src: "music/3HS.mp3",
+    cdImage: "img/3HS-cd.png"
+  },
+  {
+    title: "Alien Alien",
+    artist: "Nayutalien",
+    src: "music/AlienAlien.mp3",
+    cdImage: "img/alien-cd.png"
+  },
+  {
+    title: "A CYBER'S WORLD?",
+    artist: "Toby Fox",
+    src: "music/CyberWorld.mp3",
+    cdImage: "img/cyberworld-cd.png"
+  },
+  {
+    title: "Knight of the Wind",
+    artist: "Crush 40",
+    src: "music/Sonic.mp3",
+    cdImage: "img/sonic-cd.png"
+  },
+  {
+    title: "That Distant Shore",
+    artist: "Rebecca Sugar",
+    src: "music/DistantShore.mp3",
+    cdImage: "img/distantshore-cd.png"
+  },
+  {
+    title: "Realm Overworld",
+    artist: "Zelda Spirit Tracks OST",
+    src: "music/SpiritTracks.mp3",
+    cdImage: "img/zelda-cd.png"
+  },
+  {
+    title: "Hikari e",
+    artist: "The Babystars",
+    src: "music/Wampi.mp3",
+    cdImage: "img/wampi-cd.png"
+  },
+  {
+    title: "Komasan Theme",
+    artist: "Yo-Kai Watch OST",
+    src: "music/Yokai.mp3",
+    cdImage: "img/yokai-cd.png"
+  }
+];
+const pokemonRow = document.getElementById("pokemon-row");
+const fe3hRow = document.getElementById("fe3h-row");
+const vocalRow = document.getElementById("vocal-row");
+const deltaRow = document.getElementById("delta-row");
+const sonicRow = document.getElementById("sonic-row");
+const SUROW = document.getElementById("SU-row");
+const ZeldaRow = document.getElementById("ST-row");
+const OPRow = document.getElementById("OP-row");
+const YokaiRow = document.getElementById("yk-row");
+
+  let currentTrack = 0;
+
+  const music = document.getElementById('music');
+  const playBtn = document.getElementById('play-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const progressContainer = document.getElementById('progress-container');
+  const cdImage = document.getElementById('cd-image');
+  const currentTimeEl = document.getElementById('current-time');
+  const totalTimeEl = document.getElementById('total-time');
+  const songTitle = document.querySelector('.song-title');
+  const songArtist = document.querySelector('.song-artist');
+
+  function formatTime(t) {
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+ function loadTrack(index) {
+  const track = playlist[index];
+  music.src = track.src;
+  songTitle.textContent = track.title;
+  songArtist.textContent = track.artist;
+  cdImage.src = track.cdImage;
+  playBtn.textContent = '▶';
+  cdImage.classList.remove('spin');
+  progressBar.style.width = '0%';
+  currentTimeEl.textContent = '0:00';
+  totalTimeEl.textContent = '0:00';
+if (track.title === "Champion Leon Battle") {
+  pokemonRow.classList.add("active");
+  fe3hRow.classList.remove("active");
+  YokaiRow.classList.remove("active");
+}
+else if (track.title === "Fódlan Winds") {
+  fe3hRow.classList.add("active");
+  pokemonRow.classList.remove("active");
+  vocalRow.classList.remove("active");
+}
+else if (track.title === "Alien Alien") {
+  vocalRow.classList.add("active");
+  fe3hRow.classList.remove("active");
+  deltaRow.classList.remove("active");
+}
+else if (track.title === "A CYBER'S WORLD?") {
+  deltaRow.classList.add("active");
+  sonicRow.classList.remove("active");
+  vocalRow.classList.remove("active");
+}
+else if (track.title === "Knight of the Wind") {
+  sonicRow.classList.add("active");
+  deltaRow.classList.remove("active");
+  SUROW.classList.remove("active")
+}
+else if (track.title === "That Distant Shore") {
+  SUROW.classList.add("active");
+  sonicRow.classList.remove("active");
+  ZeldaRow.classList.remove("active")
+}
+else if (track.title === "Realm Overworld") {
+  ZeldaRow.classList.add("active");
+  SUROW.classList.remove("active");
+  OPRow.classList.remove("active")
+}
+else if (track.title === "Hikari e") {
+  OPRow.classList.add("active");
+  ZeldaRow.classList.remove("active");
+  YokaiRow.classList.remove("active")
+}
+else if (track.title === "Komasan Theme") {
+  YokaiRow.classList.add("active");
+  OPRow.classList.remove("active");
+  pokemonRow.classList.remove("active")
+}
+else {
+  pokemonRow.classList.remove("active");
+  fe3hRow.classList.remove("active");
+  vocalRow.classList.remove("active");
+  deltaRow.classList.remove("active");
+}
+}
+
+  function playPause() {
+    if (music.paused) {
+      music.play();
+      playBtn.textContent = '⏸';
+      cdImage.classList.add('spin');
+    } else {
+      music.pause();
+      playBtn.textContent = '▶';
+      cdImage.classList.remove('spin');
+    }
+  }
+
+  function playNext() {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    loadTrack(currentTrack);
+    music.play();
+    playBtn.textContent = '⏸';
+    cdImage.classList.add('spin');
+  }
+
+  function playPrev() {
+    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+    loadTrack(currentTrack);
+    music.play();
+    playBtn.textContent = '⏸';
+    cdImage.classList.add('spin');
+  }
+
+  playBtn.addEventListener('click', playPause);
+  nextBtn.addEventListener('click', playNext);
+  prevBtn.addEventListener('click', playPrev);
+
+  music.addEventListener('timeupdate', () => {
+    const percent = (music.currentTime / music.duration) * 100;
+    progressBar.style.width = percent + '%';
+    currentTimeEl.textContent = formatTime(music.currentTime);
+    totalTimeEl.textContent = formatTime(music.duration);
+  });
+
+  progressContainer.addEventListener('click', (e) => {
+    const width = progressContainer.clientWidth;
+    const clickX = e.offsetX;
+    music.currentTime = (clickX / width) * music.duration;
+  });
+
+  music.addEventListener('ended', () => {
+    playNext();
+  });
+
+  loadTrack(currentTrack);
+
+    const zoomModal = document.getElementById('zoom-modal');
+  const zoomImg = document.getElementById('zoom-img');
+  const zoomClose = document.getElementById('zoom-close');
+
+  document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', () => {
+      zoomImg.src = img.src;
+      zoomModal.classList.add('active');
+    });
+  });
+
+  zoomClose.addEventListener('click', () => {
+    zoomModal.classList.remove('active');
+    zoomImg.src = '';
+  });
+
+  zoomModal.addEventListener('click', (e) => {
+    if (e.target === zoomModal) {
+      zoomModal.classList.remove('active');
+      zoomImg.src = '';
+    }
+  });
+
+  let isDragging = false;
+
+  zoomImg.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    zoomImg.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  zoomImg.addEventListener('mouseup', () => {
+    isDragging = false;
+    zoomImg.style.cursor = 'grab';
+  });
+
+  zoomImg.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    zoomImg.parentElement.scrollLeft -= e.movementX;
+    zoomImg.parentElement.scrollTop -= e.movementY;
+  });
+const muteBtn = document.getElementById('mute-btn');
+const volumeSlider = document.getElementById('volume-slider');
+
+let lastVolume = 1;
+
+volumeSlider.addEventListener('input', () => {
+  music.volume = volumeSlider.value;
+
+  if (music.volume == 0) {
+    music.muted = true;
+    muteBtn.textContent = '🔇';
+  } else {
+    music.muted = false;
+    muteBtn.textContent = '🔊';
+    lastVolume = music.volume;
+  }
+});
+
+muteBtn.addEventListener('click', () => {
+  if (music.muted || music.volume == 0) {
+    music.muted = false;
+    music.volume = lastVolume || 1;
+    volumeSlider.value = music.volume;
+    muteBtn.textContent = '🔊';
+  } else {
+    music.muted = true;
+    lastVolume = music.volume;
+    music.volume = 0;
+    volumeSlider.value = 0;
+    muteBtn.textContent = '🔇';
+  }
+  const pokemonRow = document.getElementById("pokemon-row");
+
+function loadTrack(index) {
+  const track = playlist[index];
+
+  music.src = track.src;
+  songTitle.textContent = track.title;
+  songArtist.textContent = track.artist;
+
+  cdImage.style.opacity = 0;
+  setTimeout(() => {
+    cdImage.src = track.cdImage;
+    cdImage.style.opacity = 1;
+  }, 100);
+
+  if (track.title === "Champion Leon Battle") {
+    pokemonRow.classList.add("active");
+  } else {
+    pokemonRow.classList.remove("active");
+  }
+
+  playBtn.textContent = '▶';
+  cdImage.classList.remove('spin');
+  progressBar.style.width = '0%';
+  currentTimeEl.textContent = '0:00';
+  totalTimeEl.textContent = '0:00';
+}
+});
+</script>
+    </body>
+</html>
